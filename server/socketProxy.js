@@ -5,11 +5,13 @@ const { connect, stdin } = require("./kubernetesWebSocket");
 const wssServer = new WebSocket.Server({
   noServer: true,
 });
-
+// troubleshooting
+// my-demo-app-54ff44859-qnjjd
 exports.setupSocket = (server) => {
   server.on("upgrade", (request, socket, head) => {
-    let { pod } = url.parse(request.url, true).query;
-    podSocket = connect(pod);
+    console.log('url is = ', request.url)
+    let {pod,container,namespace,shell } = url.parse(request.url, true).query;
+    podSocket = connect(pod,container,namespace,shell);
     wssServer.handleUpgrade(request, socket, head, (ws) => {
       wssServer.emit("connection", ws, podSocket);
     });

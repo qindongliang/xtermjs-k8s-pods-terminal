@@ -30,6 +30,15 @@
             <div class="card-body max-heigth">
               <div class="input-group mb-3">
                 <input
+                        type="text"
+                        id="namespace"
+                        class="form-control"
+                        placeholder="namespace"
+                        aria-label="namespace"
+                        value="default"
+                        aria-describedby="pod-attach"
+                />
+                <input
                   type="text"
                   id="pod-name"
                   class="form-control"
@@ -37,13 +46,30 @@
                   aria-label="K8s Pod Name"
                   aria-describedby="pod-attach"
                 />
+                <input
+                        type="text"
+                        id="container-name"
+                        class="form-control"
+                        placeholder="K8s Container Name"
+                        aria-label="K8s Container Name"
+                        aria-describedby="container-attach"
+                />
+                <input
+                        type="text"
+                        id="shell"
+                        class="form-control"
+                        placeholder="shell"
+                        aria-label="shell"
+                        value="bash"
+                        aria-describedby="container-attach"
+                />
                 <div class="input-group-append">
                   <button
                     class="btn btn-outline-primary"
                     type="button"
                     id="pod-attach"
                   >
-                    EXEC TTY
+                    打开Terminal
                   </button>
                 </div>
               </div>
