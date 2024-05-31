@@ -3,7 +3,7 @@ const WebSocket = require("ws");
 const fs = require('fs');
 // console.log(env.KUBERNETES_HOST)
 
-let token="" // set your test token
+let token=fs.readFileSync('/tmp/token','utf-8').trim() // set your test token
 exports.connect = (pod, container,namespace,shell) => {
   // podUrl = `wss://${env.KUBERNETES_HOST}/api/v1/namespaces/${env.KUBERNETES_NAMESPACE}/pods/${pod}/exec?command=sh&stdin=true&stdout=true&tty=true`;
   console.log(`pod is ${pod}, ${container}, ns=${namespace}, shell=${shell}`)
