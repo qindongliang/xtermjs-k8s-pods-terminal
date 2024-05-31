@@ -9,41 +9,7 @@ This is a proof-of-concept (PoC) attempt to communicate directly with Kubernetes
 ## Requirements
 
 - NodeJS
-- K8s environment (Minishift/Minikube)
-
-## K8s/OCP Configuration
-
-```bash
-# Temporary alias if using K8s instead of OCP
-[ -z "$(which oc)" ] && alias oc="kubectl"
-
-# Define namespace/project name
-KUBERNETES_NAMESPACE=xtermjs
-
-# Create namespace
-oc create ns $KUBERNETES_NAMESPACE
-
-# Creates service account and assigns needs permissions
-oc apply -n $KUBERNETES_NAMESPACE -f k8s/service-account.yml
-
-# Create test Alpine deployment
-oc apply -n $KUBERNETES_NAMESPACE -f k8s/alpine-deployment.yml
-
-TOKEN_NAME=$(oc get secrets -n $KUBERNETES_NAMESPACE | grep terminal-account-token | head -n 1 | cut -d " " -f1)
-KUBERNETES_SERVICE_ACCOUNT_TOKEN=$(oc describe secret $TOKEN_NAME -n $KUBERNETES_NAMESPACE | grep -o -E "ey.+")
-
-# Get list of pods
-oc get pods -n $KUBERNETES_NAMESPACE
-
-# Create .env file and update API host
-cp sample.env .env
-
-# Append required config
-cat <<EOF >> .env
-KUBERNETES_NAMESPACE=$KUBERNETES_NAMESPACE
-KUBERNETES_SERVICE_ACCOUNT_TOKEN=$KUBERNETES_SERVICE_ACCOUNT_TOKEN
-EOF
-```
+- K8s environment (Minishift/Minikube/Kind)
 
 ## Server
 
