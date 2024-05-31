@@ -22,8 +22,8 @@ npm install
 # Start PoC server
 npm run serve
 
-# Development mode where both frontend and backend code is being monitored and rebuilt on change
-npm run dev
+# Browser opens
+[access url](http://localhost:3000)
 ```
 
 ## References
