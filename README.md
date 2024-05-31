@@ -2,9 +2,11 @@
 
 https://github.com/va1da5/xtermjs-for-k8s-pods
 
-# xterm.js for K8s/OCP Pod PoC
+# xterm.js for K8s Pod Web Terminal
 
 This is a proof-of-concept (PoC) attempt to communicate directly with Kubernetes/OpenShift Websocket, proxy the requests and expose it using `xterm.js` terminal emulator.
+
+![exec demo](image/img.png)
 
 ## Requirements
 
